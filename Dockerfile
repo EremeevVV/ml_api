@@ -34,7 +34,7 @@ WORKDIR /app
 COPY poetry.lock pyproject.toml ./
 
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
-RUN poetry install --no-interaction --no-cache --without dev
+RUN poetry install --no-interaction --no-cache --only main
 COPY . .
 EXPOSE 5000
 RUN useradd ml_api_user && chown -R ml_api_user .
