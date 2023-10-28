@@ -3,7 +3,9 @@ from random import randint
 
 from ml_api import schema
 
-function_must_be_replaced = lambda x: randint(0, 10)
+
+def function_must_be_replaced(input_vector: list) -> int:
+    return randint(0, 10)
 
 
 def ml_prediction(input_objects: list[schema.InputObject],

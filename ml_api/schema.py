@@ -12,7 +12,7 @@ class InputObject(BaseModel):
     feature4: bool
     identity: UUID
 
-    def list(self):
+    def list(self) -> list:
         return list(self.model_dump(exclude={'identity'}).values())
 
     def has_nan_or_inf(self) -> bool:
