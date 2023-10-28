@@ -27,4 +27,4 @@ class InputObject(BaseModel):
 
 class Prediction(BaseModel):
     identity: UUID
-    label: int
+    label: int | None

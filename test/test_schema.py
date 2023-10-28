@@ -4,6 +4,18 @@ from math import nan, inf
 from ml_api import schema
 
 
+def test_list():
+    expected = [0.1, 0.2, 3, True]
+    given = schema.InputObject(feature1=expected[0],
+                               feature2=expected[1],
+                               feature3=expected[2],
+                               feature4=expected[3],
+                               identity=uuid1()
+                               )
+    result = given.list()
+    assert expected == result
+
+
 def test_has_nan_or_inf_positive():
     given = schema.InputObject(feature1=nan, feature2=inf, feature3=1, feature4=False, identity=uuid1())
     assert given.has_nan_or_inf()
@@ -22,4 +34,3 @@ def test_has_nan_or_inf_positive_inf():
 def test_has_nan_or_inf_positive_nan():
     given = schema.InputObject(feature1=0.1, feature2=nan, feature3=1, feature4=False, identity=uuid1())
     assert given.has_nan_or_inf()
-
