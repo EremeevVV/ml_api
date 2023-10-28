@@ -1,5 +1,3 @@
-from math import isinf, isnan
-
 from pydantic import BaseModel
 
 from uuid import UUID
