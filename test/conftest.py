@@ -1,3 +1,5 @@
+from uuid import uuid1
+
 from pytest import fixture
 from fastapi.testclient import TestClient
 
@@ -11,5 +13,27 @@ def client() -> TestClient:
 
 
 @fixture
-def batch() -> list[dict[str, str]]:
-    return [{},{}]
+def batch() -> list[dict[str, str | float | int | bool]]:
+    return [
+        {
+            'feature1': 0.2,
+            'feature2': 0.3,
+            'feature3': 31,
+            'feature4': False,
+            'identity': f'{uuid1()}',
+        },
+        {
+            'feature1': 0.2,
+            'feature2': 0.3,
+            'feature3': 31,
+            'feature4': False,
+            'identity': f'{uuid1()}',
+        },
+        {
+            'feature1': 0.2,
+            'feature2': 0.3,
+            'feature3': 31,
+            'feature4': False,
+            'identity': f'{uuid1()}',
+        },
+    ]

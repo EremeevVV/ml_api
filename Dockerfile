@@ -26,7 +26,7 @@ RUN python -m venv $POETRY_HOME/.venv && \
     $POETRY_HOME/.venv/bin/python -m pip install poetry==$POETRY_VERSION
 
 # `builder-base` stage is used to build deps + create our virtual environment
-FROM poetry_build as ml_filter
+FROM poetry_build as ml_api
 
 WORKDIR /app
 

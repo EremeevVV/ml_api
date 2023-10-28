@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ml-api"
 version = "0.2.0"
-description = ""
+description = "Simple template for inference ml models on fasapi"
 authors = ["adios <eremeevvv72@yandex.ru>"]
 readme = "README.md"
 
