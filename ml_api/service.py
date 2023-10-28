@@ -1,22 +1,16 @@
 from typing import Callable
-from random import randint
 
 from ml_api import schema
 
 
-def function_must_be_replaced(input_vector: list) -> int:
-    return randint(0, 10)
-
-
 def ml_prediction(input_objects: list[schema.InputObject],
-                  prediction_function: Callable[[list], int] = function_must_be_replaced) -> list[schema.Prediction]:
-    predicitons: list[schema.Prediction] = []
-    for el in input_objects:
-        if el.has_nan_or_inf():
-            predicted_label = None
-        else:
-            predicted_label = prediction_function(el.list())
-        predicitons.append(schema.Prediction(identity=el.identity,
+                  vectorize_func: Callable[[schema.InputObject], list],
+                  predict_func: Callable[[list], int]) -> list[schema.Prediction]:
+    predictions: list[schema.Prediction] = []
+    for input_object in input_objects:
+        vector = vectorize_func(input_object)
+        predicted_label = predict_func(vector)
+        predictions.append(schema.Prediction(identity=input_object.identity,
                                              label=predicted_label,
                                              ))
-    return predicitons
+    return predictions
